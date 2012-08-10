@@ -1,0 +1,1 @@
+A sinatra app to run a screen using a raspberry pi that outputs whats currently playing on a Sonos system.  Also using the GPIIO allows you to use a button to stop the sonos system from playing.
