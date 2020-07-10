@@ -13,7 +13,7 @@ def wrapInEnvelope(body)
 end
 
 def getURL(path)
-	host = '192.168.57.124'
+	host = '192.168.86.105'
     "http://#{host}:1400#{path}"
 end
 
@@ -29,7 +29,7 @@ def makeRequest(path, action, body, response)
 	req.body = wrappedBody
 	
 	
-	res = Net::HTTP.start('192.168.57.124', 1400) {|http|
+	res = Net::HTTP.start('192.168.86.105', 1400) {|http|
 	  puts 'requesting'
 	  res = http.request(req)
 	  #puts res
@@ -64,7 +64,7 @@ def makeRequest(path, action, body, response)
 	  track = track.gsub(/\&apos;/, "'")
 	   track = track.gsub(/\&amp;/, "&")
 	  
-	   
+	   puts "{\"album\": \"#{album}\", \"artist\": \"#{artist}\", \"track\": \"#{track}\", \"url\": \"#{url}\"} "
 	  return "{\"album\": \"#{album}\", \"artist\": \"#{artist}\", \"track\": \"#{track}\", \"url\": \"#{url}\"} "
 	 	}
 	
@@ -90,17 +90,17 @@ get '/whatsPlaying' do
 end
 
 get '/sonos' do
-	file = File.open("/home/pi/Projects/Sonos/sonos.html", "rb")
+	file = File.open("./sonos.html", "rb")
 	contents = file.read
 end
 
 get '/index' do
-	file = File.open("/home/pi/Projects/Sonos/index.html", "rb")
+	file = File.open("./index.html", "rb")
 	contents = file.read
 end
 
 get '/quote' do
-	file = File.open("/home/pi/Projects/Sonos/quote.html", "rb")
+	file = File.open("./quote.html", "rb")
 	contents = file.read
 
 end
@@ -116,16 +116,16 @@ get '/xkcd' do
 end
 
 get '/jquery.js' do
-	file = File.open("/home/pi/Projects/Sonos/jquery.js", "rb")
+	file = File.open("./jquery.js", "rb")
 	contents = file.read
 end
 
 get '/stylesheet.css' do
-	file = File.open("/home/pi/Projects/Sonos/stylesheet.css", "rb")
+	file = File.open("./stylesheet.css", "rb")
 	contents = file.read
 end
 
 get '/background.jpg' do
-	file = File.open("/home/pi/Projects/Sonos/background-blue-cropped.jpg", "rb")
+	file = File.open("./background-blue-cropped.jpg", "rb")
 	contents = file.read
 end

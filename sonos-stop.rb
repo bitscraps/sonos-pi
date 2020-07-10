@@ -22,7 +22,7 @@ def stopPlaying()
 	req.body = '<?xml version="1.0" encoding="utf-8"?><s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><ns0:Stop xmlns:ns0="urn:schemas-upnp-org:service:AVTransport:1"><InstanceID>0</InstanceID></ns0:Stop></s:Body></s:Envelope>'
 	
 	
-	res = Net::HTTP.start('192.168.57.124', 1400) {|http|
+	res = Net::HTTP.start('192.168.86.105', 1400) {|http|
 	
 	  res = http.request(req)
 	  }

@@ -4,7 +4,7 @@
   <link href='http://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo' rel='stylesheet' type='text/css'>
   <LINK href="/stylesheet.css" rel="stylesheet" type="text/css">
   
-  <script type="text/javascript" src="jquery.js"></script>
+  <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
 	<script>
 		function checkTrack() {
 			$.ajax({
@@ -19,8 +19,11 @@
 					 document.getElementById('album').innerHTML = results.album;
 					 document.getElementById('track').innerHTML = results.track;
 					 
-					 document.getElementById('albumart').innerHTML = '<img src="'+results.url+'" style="width:100%;height:100%">'
-					 
+           if (document.getElementById('albumart').innerHTML.replace('&amp;', '&') != '<img src="'+results.url+'" style="width:100%;height:100%">') {
+              console.log(document.getElementById('albumart').innerHTML.replace('&amp;', '&'));
+              console.log('<img src="'+results.url+'" style="width:100%;height:100%">');
+  					 document.getElementById('albumart').innerHTML = '<img src="'+results.url+'" style="width:100%;height:100%">'
+	         }				 
 					//alert(results.url);
       	},
      		error:function(){
@@ -41,8 +44,8 @@
 	padding:20px;
 	background-color:#FEFEFE; color:#555555;font-family:'Swanky and Moo Moo', cursive;font-size:32px;font-weight:bold;
 ">
- <p style="font-size:1.5em;line-height:100%;margin-top:0px;padding-top:0px;">
-  	<h4 style="margin-top:20px;margin-bottom:10px;font-size:0.5em">Album</h4>
+ 
+  	<h4 style="margin-top:5px;margin-bottom:10px;font-size:0.5em">Album</h4>
   	<span id="album"></span><br/>
   	
   	<h4 style="margin-top:20px;margin-bottom:10px;font-size:0.5em">Artist</h4>
@@ -50,7 +53,7 @@
   	
   	<h4 style="margin-top:20px;margin-bottom:10px;font-size:0.5em">Track</h4>
   	 <span id="track"></span><br/>
-  </p>
+
   <div style="width:380px;height:380px;position:absolute;bottom:0px;left:50%; margin-left:-200px;" id="albumart"></div>
 
 </body>
